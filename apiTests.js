@@ -1,11 +1,4 @@
-const axios = require('axios');
 
-const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
-
-const logTestResult = (testName, success, details = '') => {
-  console.log(`[${success ? 'PASS' : 'FAIL'}] ${testName}${details ? ` - ${details}` : ''}`);
-  if (!success) console.error(`    Details: ${details}`);
-};
 
 async function testGetAllPosts() {
   const testName = 'GET /posts - Отримати всі пости';

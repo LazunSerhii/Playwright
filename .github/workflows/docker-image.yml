@@ -1,18 +1,20 @@
-name: Docker Image CI
+name: Playwright Tests
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
-
-  build:
-
+  playwright:
+    name: 'Run Playwright Tests in Docker'
     runs-on: ubuntu-latest
-
+    container:
+      image: mcr.microsoft.com/playwright:v1.39.0-jammy
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies (if any, e.g., specific test runner or reporter not in image)
+       
+      - name: Run Playwright tests
+        run: npx playwright test
+
+  
